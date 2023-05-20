@@ -1,6 +1,7 @@
-#!/usr/bin/env nodo
+// const { mdLinks } = require('./index.js');
 
-//Prueba
-const [, , ... args] = process.argv
+// mdLinks('/carpeta-prueba/archivo-prueba.txt').then(()=>{})
+// .catch((error) => {
+//     console.log(error)
+// });
 
-console.log(`Hello world ${args}`);
