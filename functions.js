@@ -1,13 +1,15 @@
+const { error } = require('console');
 const fs = require('fs');
 const path = require('path');
+
  
 // seeing if the route exists
 const existsPath = (route) => {
   if (fs.existsSync(route)) {
-    console.log('La ruta existe.');
+    // console.log('La ruta existe.');
     return true;
   } else {
-    console.log('La ruta no existe.');
+    // console.log('La ruta no existe.');
     return false;
   }
 };
@@ -25,22 +27,6 @@ const absolutePath = (route) => {
 }
 absolutePath('carpeta-prueba/sub-carpeta')
 
-// Read file
-const readFile = fs.readFile('C:/Users/belen/Desktop/Laboratoria/DEV005-md-links/carpeta-prueba/archivo-prueba.txt', 'utf8', (error, data) => {
-    if (error) {
-      console.error('No se puede leer el archivo');
-      return;
-    }
-  
-    console.log(data);
-  });
-
-// File extension
-const filePath = 'C:/Users/belen/Desktop/Laboratoria/DEV005-md-links/carpeta-prueba/archivo-prueba.txt';
-const extension = path.extname(filePath);
-
-console.log(extension); // Resultado: ".js"
-
 // Read directory
 
 const readDirectory = (directory) => {
@@ -53,20 +39,33 @@ try {
     if (stats.isDirectory()) {
       readDirectory(absolutePath);
     } else {
-      console.log(absolutePath);
+      // check if the file extension is .md
+     if (path.extname(file) === '.md') {
+       fs.readFile(absolutePath, 'utf8', (error, data) => {
+        if (error) {
+          console.error('No se puede leer el archivo');
+        } else {
+          const links = [];
+          const linkMatcher = /\[([^\]]+)\]\(([^)]+)\)/g;
+          let match;
+          while ((match = linkMatcher.exec(data))) {
+            const text = match[1];
+            const url = match[2];
+            links.push({ href: url, text, file: absolutePath });
+          }
+           console.log(`Enlaces encontrados en ${absolutePath}:`, links);
+        }
+      });
+    } else {
+       console.log('archivo no cuenta con extensión .md:', absolutePath);
     }
+  }
   });
 } catch (error) {
-  console.error('Error al leer el directorio');
+   console.error('Error al leer el directorio');
 }
 };
-readDirectory('C:/Users/belen/Desktop/Laboratoria/DEV005-md-links/carpeta-prueba');
+ readDirectory('C:/Users/belen/Desktop/Laboratoria/DEV005-md-links/carpeta-prueba');
 
-// Join two routes
-// const ruta1 = 'carpeta-prueba';
-// const ruta2 = 'archivo-prueba2.txt';
 
-// const rutaCompleta = path.join(ruta1, ruta2);
-// console.log(rutaCompleta);
-
-module.exports = { existsPath, readFile };
+module.exports = { existsPath, absolutePath, readDirectory };
