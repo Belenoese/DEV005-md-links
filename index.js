@@ -1,35 +1,38 @@
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
-const { existsPath, absolutePath, readDirectory, readTotalMd, validateTotalMd  } = require('./functions.js');
-
-
+const { existsPath, absolutePath, readDirectory, readTotalMd, validateLinks, generateStats  } = require('./functions.js');
 
 const mdLinks = (path, options) => {
-  return new Promise((resolve, reject)=> {
-    // Identify if a route exists otherwise reject the pledge
+  return new Promise((resolve, reject) => {
     if (existsPath(path)) {
-    // Identify if the path is relative in order to convert it into an absolute path
-    const absPath = (absolutePath(path)) 
+      const absPath = absolutePath(path);
+      const mdFiles = readDirectory(absPath);
 
-    const mdFiles = readDirectory(absPath);
-    readTotalMd(mdFiles)
-      .then((links) => {
-        if (options.validate) {
-          return validateTotalMd(links, true);
-        } else {
-          resolve(links);
-        }
-      })
-      .then((validatedLinks) => {
-        resolve(validatedLinks);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  }});
+      readTotalMd(mdFiles)
+        .then((links) => {
+          if (options.validate) {
+             validateLinks(links)
+              .then((validatedLinks) => {
+                resolve(validatedLinks);
+              })
+              .catch((error) => {
+                reject(error);
+              });
+          } else {
+            resolve(links);
+          }
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    } else {
+      resolve('La ruta no existe o no contiene archivos .md');
+    }
+  });
 };
 
 module.exports = {
-  mdLinks
+  mdLinks,
+  generateStats
 };
