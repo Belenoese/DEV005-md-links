@@ -25,7 +25,7 @@ El comportamiento identifica el archivo Markdown, analiza su contenido e imprime
 ### `--validate`
 `mdlinks-bele <path-to-file> --validate`
 
-Si se pasa esta opción, md-links-bele realizará una petición HTTP para verificar si los enlaces son válidos.
+Si se pasa esta opción, mdlinks-bele realizará una petición HTTP para verificar si los enlaces son válidos.
 
 Por ejemplo:
 
