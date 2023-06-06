@@ -1,5 +1,8 @@
 {
-  "name": "dev005-md-links",
+  "name": "mdlinks-bele",
+  "bin": {
+    "mdlinks-bele": "cli.js"
+  },
   "version": "1.0.0",
   "description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Entregables](#6-entregables)\r * [7. Hacker edition](#7-hacker-edition)\r * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)\r * [9. Checklist](#9-checklist)\r * [10. Achicando el problema](#10-achicando-el-problema)",
   "main": "index.js",
@@ -39,6 +42,7 @@
     "collect-v8-coverage": "^1.0.1",
     "color-convert": "^2.0.1",
     "color-name": "^1.1.4",
+    "colors": "^1.4.0",
     "concat-map": "^0.0.1",
     "convert-source-map": "^2.0.0",
     "cross-spawn": "^7.0.3",
@@ -247,10 +251,11 @@
     "url": "git+https://github.com/Belenoese/DEV005-md-links.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Belen Neira",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Belenoese/DEV005-md-links/issues"
   },
-  "homepage": "https://github.com/Belenoese/DEV005-md-links#readme"
+  "homepage": "https://github.com/Belenoese/DEV005-md-links#readme",
+  "devDependencies": {}
 }

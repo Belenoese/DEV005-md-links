@@ -1,20 +1,20 @@
-# md-links
+# md-links-bele
 
-md-links es una herramienta que analiza archivos Markdown y extrae los enlaces encontrados en ellos brindando diferentes estadisticas de acuerdo a las opciones que accedas. 
+md-links-bele es una herramienta que analiza archivos Markdown y extrae los enlaces encontrados en ellos brindando diferentes estadisticas de acuerdo a las opciones que accedas. 
 ## Instalación
 
-Puedes instalar md-links utilizando npm. Ejecuta el siguiente comando en tu terminal: 
-`npm install <github-belenoese>/md-links`
+Puedes instalar md-links-bele utilizando npm. Ejecuta el siguiente comando en tu terminal: 
+`npm install <github-belenoese>/md-links-bele`
 
 ## Guía de uso
 
 Para ejecutar mdLinks ejecuta el siguiente comando desde la terminal:
-`md-links <path-to-file> [options]`
+`md-links-bele <path-to-file> [options]`
 
 Por ejemplo:
 
 ```sh
-$ md-links ./some/example.md
+$ md-links-bele ./some/example.md
 ./some/example.md http://algo.com/2/3/ Link a algo
 ./some/example.md https://otra-cosa.net/algun-doc.html algún doc
 ./some/example.md http://google.com/ Google
@@ -23,14 +23,14 @@ El comportamiento identifica el archivo Markdown, analiza su contenido e imprime
 
 ## Opciones
 ### `--validate`
-`md-links <path-to-file> --validate`
+`md-links-bele <path-to-file> --validate`
 
-Si se pasa esta opción, md-links realizará una petición HTTP para verificar si los enlaces son válidos.
+Si se pasa esta opción, md-links-bele realizará una petición HTTP para verificar si los enlaces son válidos.
 
 Por ejemplo:
 
 ```sh
-$ md-links ./some/example.md --validate
+$ md-links-bele ./some/example.md --validate
 ./some/example.md http://algo.com/2/3/ ok 200 Link a algo
 ./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
 ./some/example.md http://google.com/ ok 301 Google
@@ -38,13 +38,13 @@ $ md-links ./some/example.md --validate
 Como resultado el output incluirá la palabra ok o fail después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha URL.
 
 ### `--stats`
-`md-links <path-to-file> --stats`
+`md-links-bele <path-to-file> --stats`
 
 Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
 básicas sobre los links.
 
 ```sh
-$ md-links ./some/example.md --stats
+$ md-links-bele ./some/example.md --stats
 Total: 3
 Unique: 3
 ```
@@ -53,7 +53,7 @@ También podemos combinar `--stats` y `--validate` para obtener estadísticas qu
 necesiten de los resultados de la validación.
 
 ```sh
-$ md-links ./some/example.md --stats --validate
+$ md-links-bele ./some/example.md --stats --validate
 Total: 3
 Unique: 3
 Broken: 1
