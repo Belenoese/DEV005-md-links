@@ -1,5 +1,8 @@
+#!/usr/bin/env nodo
+
 const { validate } = require('jest-validate');
 const { mdLinks, generateStats } = require('./index.js');
+const { colors } = require('colors');
 
 const userInput = process.argv[2];
 let optionsObj = {
@@ -24,12 +27,14 @@ mdLinks(userInput, optionsObj)
 .then((result) => {
     if (optionsObj.validate && optionsObj.stats) {
         const stats = generateStats(result);
-        const statsString = `Total: ${stats.total} Unique: ${stats.unique} Broken: ${stats.broken}`;
-        console.log(statsString);
-    } else if (optionsObj.stats) {
+        console.log('Total:'.brightMagenta, stats.total );
+        console.log('Unique:'.brightGreen, stats.unique );
+        console.log('Broken:'.brightRed, stats.broken );
+    } else if (optionsObj.stats) {  
         const stats = generateStats(result);
-        const statsString = `Total: ${stats.total} Unique: ${stats.unique}`;
-        console.log(statsString);
+        // const statsString = `Total: ${stats.total} Unique: ${stats.unique}`;
+        console.log('Total:'.brightMagenta, stats.total );
+        console.log('Unique:'.brightGreen, stats.unique );
     } else {
         console.log(result);
     }
