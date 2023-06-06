@@ -1,4 +1,4 @@
-#!/usr/bin/env nodo
+#!/usr/bin/env node
 
 const { validate } = require('jest-validate');
 const { mdLinks, generateStats } = require('./index.js');
