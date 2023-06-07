@@ -1,20 +1,20 @@
-# mdlinks-bele
+# mdlinks-belen
 
-mdlinks-bele es una herramienta que analiza archivos Markdown y extrae los enlaces encontrados en ellos brindando diferentes estadisticas de acuerdo a las opciones que accedas. 
+mdlinks-belen es una herramienta que analiza archivos Markdown y extrae los enlaces encontrados en ellos brindando diferentes estadisticas de acuerdo a las opciones que accedas. 
 ## Instalación
 
-Puedes instalar mdlinks-bele utilizando npm. Ejecuta el siguiente comando en tu terminal: 
-`npm install <github-belenoese>/mdlinks-bele`
+Puedes instalar mdlinks-belen utilizando npm. Ejecuta el siguiente comando en tu terminal: 
+`npm install <github-belenoese>/mdlinks-belen`
 
 ## Guía de uso
 
 Para ejecutar mdLinks ejecuta el siguiente comando desde la terminal:
-`mdlinks-bele <path-to-file> [options]`
+`mdlinks-belen <path-to-file> [options]`
 
 Por ejemplo:
 
 ```sh
-$ mdlinks-bele ./some/example.md
+$ mdlinks-belen ./some/example.md
 ./some/example.md http://algo.com/2/3/ Link a algo
 ./some/example.md https://otra-cosa.net/algun-doc.html algún doc
 ./some/example.md http://google.com/ Google
@@ -23,14 +23,14 @@ El comportamiento identifica el archivo Markdown, analiza su contenido e imprime
 
 ## Opciones
 ### `--validate`
-`mdlinks-bele <path-to-file> --validate`
+`mdlinks-belen <path-to-file> --validate`
 
-Si se pasa esta opción, mdlinks-bele realizará una petición HTTP para verificar si los enlaces son válidos.
+Si se pasa esta opción, mdlinks-belen realizará una petición HTTP para verificar si los enlaces son válidos.
 
 Por ejemplo:
 
 ```sh
-$ mdlinks-bele ./some/example.md --validate
+$ mdlinks-belen ./some/example.md --validate
 ./some/example.md http://algo.com/2/3/ ok 200 Link a algo
 ./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
 ./some/example.md http://google.com/ ok 301 Google
@@ -38,13 +38,13 @@ $ mdlinks-bele ./some/example.md --validate
 Como resultado el output incluirá la palabra ok o fail después de la URL, así como el status de la respuesta recibida a la petición HTTP a dicha URL.
 
 ### `--stats`
-`mdlinks-bele <path-to-file> --stats`
+`mdlinks-belen <path-to-file> --stats`
 
 Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
 básicas sobre los links.
 
 ```sh
-$ mdlinks-bele ./some/example.md --stats
+$ mdlinks-belen ./some/example.md --stats
 Total: 3
 Unique: 3
 ```
@@ -53,7 +53,7 @@ También podemos combinar `--stats` y `--validate` para obtener estadísticas qu
 necesiten de los resultados de la validación.
 
 ```sh
-$ mdlinks-bele ./some/example.md --stats --validate
+$ mdlinks-belen ./some/example.md --stats --validate
 Total: 3
 Unique: 3
 Broken: 1
